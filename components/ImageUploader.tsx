@@ -5,38 +5,57 @@ import { useTranslation } from '../hooks/useTranslation';
 interface ImageUploaderProps {
   onImageUpload: (base64: string, mimeType: string, dataUrl: string) => void;
   onClearImage: () => void;
+  onError: (message: string) => void;
   designType: DesignType;
   previewUrl: string | null;
 }
 
-const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageUpload, onClearImage, designType, previewUrl }) => {
+const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
+const ALLOWED_FILE_TYPES = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+
+const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageUpload, onClearImage, onError, designType, previewUrl }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { t } = useTranslation();
 
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        const dataUrl = reader.result as string;
-        const mimeType = file.type;
-        const pureBase64 = dataUrl.split(',')[1];
-        onImageUpload(pureBase64, mimeType, dataUrl);
-      };
-      reader.readAsDataURL(file);
+  const processFile = (file: File | null | undefined) => {
+    if (!file) {
+      return;
     }
+
+    // 1. Validation
+    if (!ALLOWED_FILE_TYPES.includes(file.type)) {
+      onError(t('errorInvalidFileType'));
+      if (fileInputRef.current) fileInputRef.current.value = '';
+      return;
+    }
+
+    if (file.size > MAX_FILE_SIZE) {
+      onError(t('errorFileSizeTooLarge'));
+      if (fileInputRef.current) fileInputRef.current.value = '';
+      return;
+    }
+
+    onError(''); // Clear any existing error
+
+    // 2. Read file
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      const dataUrl = reader.result as string;
+      const mimeType = file.type;
+      const pureBase64 = dataUrl.split(',')[1];
+      onImageUpload(pureBase64, mimeType, dataUrl);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    processFile(event.target.files?.[0]);
   };
 
   const handleDrop = (event: React.DragEvent<HTMLLabelElement>) => {
     event.preventDefault();
     event.stopPropagation();
-    const files = event.dataTransfer.files;
-    if (files && files.length > 0) {
-      const syntheticEvent = {
-        target: { files }
-      } as unknown as React.ChangeEvent<HTMLInputElement>;
-      handleFileChange(syntheticEvent);
-    }
+    processFile(event.dataTransfer.files?.[0]);
   };
 
   const handleDragOver = (event: React.DragEvent<HTMLLabelElement>) => {
@@ -61,7 +80,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageUpload, onClearIma
         ref={fileInputRef}
         className="hidden"
         onChange={handleFileChange}
-        accept="image/*"
+        accept="image/jpeg,image/png,image/gif,image/webp"
         aria-hidden="true"
         tabIndex={-1}
       />
