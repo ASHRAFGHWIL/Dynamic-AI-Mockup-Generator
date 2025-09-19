@@ -10,7 +10,7 @@ interface ImageUploaderProps {
   previewUrl: string | null;
 }
 
-const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
+const MAX_FILE_SIZE = 15 * 1024 * 1024; // 15 MB
 const ALLOWED_FILE_TYPES = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
 
 const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageUpload, onClearImage, onError, designType, previewUrl }) => {

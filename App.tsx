@@ -1021,7 +1021,7 @@ const App: React.FC = () => {
       }
 
       setGeneratedImage(`data:image/png;base64,${finalImageB64}`);
-    } catch (err) { // FIX: Added opening brace for the catch block
+    } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'An unknown error occurred.';
       console.error("Mockup generation failed:", err);
       setError(errorMessage);
