@@ -8,6 +8,7 @@ import MockupDisplay from './components/MockupDisplay';
 import { generateBaseImage, editImage, applyArtisticStyle } from './services/geminiService';
 import { useTranslation } from './hooks/useTranslation';
 import AspectRatioSelector from './components/AspectRatioSelector';
+import VariationCountSelector from './components/VariationCountSelector';
 import ArtisticStyleSelector from './components/ArtisticStyleSelector';
 import ToggleSwitch from './components/ToggleSwitch';
 
@@ -117,6 +118,46 @@ const SCENARIO_OPTIONS: ScenarioOption[] = [
     subcategory: 'subcategoryRooms',
   },
   {
+    id: Scenario.CORPORATE_BOARDROOM_FRAME,
+    title: 'Corporate Boardroom Frame',
+    description: 'A sleek frame on the wall of a modern, executive boardroom.',
+    image: 'https://picsum.photos/seed/boardroom/400/300',
+    requiresDesign: 'frame',
+    subcategory: 'subcategoryRooms',
+  },
+  {
+    id: Scenario.LUXURY_HOTEL_LOBBY_FRAME,
+    title: 'Luxury Hotel Lobby Frame',
+    description: 'A large, impressive frame in the opulent lobby of a five-star hotel.',
+    image: 'https://picsum.photos/seed/hotelframe/400/300',
+    requiresDesign: 'frame',
+    subcategory: 'subcategoryRooms',
+  },
+  {
+    id: Scenario.MODERN_OFFICE_RECEPTION_FRAME,
+    title: 'Modern Office Reception Frame',
+    description: 'Your design in a frame behind the reception desk of a contemporary office.',
+    image: 'https://picsum.photos/seed/reception/400/300',
+    requiresDesign: 'frame',
+    subcategory: 'subcategoryRooms',
+  },
+  {
+    id: Scenario.ARCHITECTS_OFFICE_FRAME,
+    title: 'Architect\'s Office Frame',
+    description: 'Showcase your work in the context of a creative architect\'s studio.',
+    image: 'https://picsum.photos/seed/architect/400/300',
+    requiresDesign: 'frame',
+    subcategory: 'subcategoryRooms',
+  },
+  {
+    id: Scenario.RESTAURANT_WALL_FRAME,
+    title: 'Restaurant Wall Frame',
+    description: 'A framed piece on the wall of a trendy, upscale bistro or restaurant.',
+    image: 'https://picsum.photos/seed/restaurant/400/300',
+    requiresDesign: 'frame',
+    subcategory: 'subcategoryRooms',
+  },
+  {
     id: Scenario.ARMCHAIR_CHANDELIER,
     title: 'Woman with Chandelier (Classic)',
     description: 'A woman in a classic interior points to a ceiling fixture, ready for your lighting design.',
@@ -163,6 +204,41 @@ const SCENARIO_OPTIONS: ScenarioOption[] = [
     title: 'Rustic Farmhouse Chandelier',
     description: 'A charming, rustic farmhouse dining area with exposed wooden beams, perfect for rustic or industrial designs.',
     image: 'https://picsum.photos/seed/farmhouse/400/300',
+    requiresDesign: 'chandelier',
+  },
+  {
+    id: Scenario.GRAND_STAIRCASE_CHANDELIER,
+    title: 'Grand Staircase Chandelier',
+    description: 'A magnificent chandelier hanging in the grand foyer of a luxurious mansion with a sweeping staircase.',
+    image: 'https://picsum.photos/seed/staircase/400/300',
+    requiresDesign: 'chandelier',
+  },
+  {
+    id: Scenario.BANQUET_HALL_CHANDELIER,
+    title: 'Banquet Hall Chandelier',
+    description: 'Showcase your design in a formal banquet hall, set for a gala event with high ceilings.',
+    image: 'https://picsum.photos/seed/banquet/400/300',
+    requiresDesign: 'chandelier',
+  },
+  {
+    id: Scenario.MUSEUM_ATRIUM_CHANDELIER,
+    title: 'Museum Atrium Chandelier',
+    description: 'A modern, sculptural chandelier as the centerpiece of a bright, minimalist museum atrium.',
+    image: 'https://picsum.photos/seed/museum/400/300',
+    requiresDesign: 'chandelier',
+  },
+  {
+    id: Scenario.OPERA_HOUSE_LOBBY_CHANDELIER,
+    title: 'Opera House Lobby Chandelier',
+    description: 'A classic, multi-tiered crystal chandelier in the opulent, historic lobby of an opera house.',
+    image: 'https://picsum.photos/seed/opera/400/300',
+    requiresDesign: 'chandelier',
+  },
+  {
+    id: Scenario.PENTHOUSE_SUITE_CHANDELIER,
+    title: 'Penthouse Suite Chandelier',
+    description: 'A contemporary chandelier in a luxurious penthouse suite with floor-to-ceiling windows showing a city skyline.',
+    image: 'https://picsum.photos/seed/penthouse/400/300',
     requiresDesign: 'chandelier',
   },
   {
@@ -286,6 +362,38 @@ const SCENARIO_OPTIONS: ScenarioOption[] = [
     title: 'Handheld Gaming Console UI',
     description: 'Display your game UI or app on the screen of a modern handheld gaming device.',
     image: 'https://picsum.photos/seed/handheld/400/300',
+    requiresDesign: 'screen',
+    subcategory: 'subcategoryScreens',
+  },
+  {
+    id: Scenario.COWORKING_SPACE_LAPTOP,
+    title: 'Laptop in Co-working Space',
+    description: 'Your app on a laptop in a vibrant, collaborative co-working environment.',
+    image: 'https://picsum.photos/seed/coworking/400/300',
+    requiresDesign: 'screen',
+    subcategory: 'subcategoryScreens',
+  },
+  {
+    id: Scenario.MEDICAL_TABLET_SCREEN,
+    title: 'Medical Tablet Screen',
+    description: 'Display your health or medical UI on a tablet in a clean, modern clinic setting.',
+    image: 'https://picsum.photos/seed/medical/400/300',
+    requiresDesign: 'screen',
+    subcategory: 'subcategoryScreens',
+  },
+  {
+    id: Scenario.RETAIL_POS_SCREEN,
+    title: 'Retail Point-of-Sale Screen',
+    description: 'Showcase your software on a point-of-sale terminal in a chic boutique.',
+    image: 'https://picsum.photos/seed/pos/400/300',
+    requiresDesign: 'screen',
+    subcategory: 'subcategoryScreens',
+  },
+  {
+    id: Scenario.DIGITAL_WHITEBOARD_MEETING,
+    title: 'Digital Whiteboard in Meeting',
+    description: 'Your presentation or app on a large, interactive whiteboard during a team brainstorm.',
+    image: 'https://picsum.photos/seed/whiteboard/400/300',
     requiresDesign: 'screen',
     subcategory: 'subcategoryScreens',
   },
@@ -730,6 +838,11 @@ const PROMPTS = {
     [Scenario.MINIMALIST_DESK_FRAME]: 'DSLR photograph of a clean, minimalist desk setup against a white wall. On the desk, leaning against the wall, is a simple, modern frame. The interior of the frame is a solid, vibrant magenta color (#FF00FF) as a placeholder. The desk has a laptop, a small plant, and a notebook. Natural light from a side window. 4K, hyper-realistic, Scandinavian design aesthetic.',
     [Scenario.CREATIVE_STUDIO_FRAME]: 'Photograph of a bright, airy artist\'s studio. In the center, there is a wooden easel. On the easel rests a large, gallery-style frame. The interior of the frame is a solid, vibrant magenta color (#FF00FF) as a placeholder. The studio is filled with art supplies, canvases, and has large windows letting in natural light. 4K, hyper-realistic, inspiring atmosphere.',
     [Scenario.OUTDOOR_CAFE_FRAME]: 'Lifestyle photograph, shallow depth of field. A person\'s hands are holding a medium-sized wooden frame at a table of a chic outdoor cafe. The placeholder area inside the frame is a solid, vibrant magenta color (#FF00FF). The background is a beautifully blurred street scene with warm afternoon light. 4K, hyper-realistic, cozy and stylish.',
+    [Scenario.CORPORATE_BOARDROOM_FRAME]: 'DSLR photograph of a modern, high-end corporate boardroom. A long, polished conference table reflects the ceiling lights. On the main wall, made of dark wood paneling, hangs a large, minimalist metal frame. The interior of the frame is a solid, vibrant magenta color (#FF00FF) placeholder. The lighting is sleek and professional. 4K, hyper-realistic, architectural photography.',
+    [Scenario.LUXURY_HOTEL_LOBBY_FRAME]: 'Wide-angle photograph of a grand, opulent hotel lobby with a marble floor, high ceilings, and luxurious furniture. On a prominent wall, a very large, ornate golden frame is hanging. The area inside the frame is a solid, vibrant magenta color (#FF00FF) as a placeholder. The lighting is warm and dramatic, highlighting the luxurious atmosphere. 8K resolution, hyper-realistic, majestic.',
+    [Scenario.MODERN_OFFICE_RECEPTION_FRAME]: 'Photograph of a bright, minimalist reception area of a modern tech company. Behind the sleek, white reception desk, on a concrete feature wall, hangs a medium-sized, simple black frame. The interior of the frame is a solid, vibrant magenta color (#FF00FF) placeholder. The scene is lit with clean, natural light. 4K, hyper-realistic.',
+    [Scenario.ARCHITECTS_OFFICE_FRAME]: 'DSLR photograph of a stylish and creative architect\'s office. The space is filled with models, blueprints, and design books. On a brick wall, a large, simple frame is hanging, as if displaying a current project. The inside of the frame is a solid, vibrant magenta color (#FF00FF) placeholder. The office is bathed in natural afternoon light. 4K, hyper-realistic, inspiring and professional.',
+    [Scenario.RESTAURANT_WALL_FRAME]: 'Photograph of the interior of a trendy, upscale restaurant with a cozy, intimate ambiance. On a dark, textured wall, a medium-sized wooden frame is hung. The placeholder area inside the frame is a solid, vibrant magenta color (#FF00FF). The lighting is warm and moody, from pendant lights over the tables. Shallow depth of field with blurred diners in the background. 4K, hyper-realistic.',
     [Scenario.ARMCHAIR_CHANDELIER]: 'Dramatic, elegant interior photograph. A woman in a stylish armchair in a luxurious room with a high ceiling looks up and points. Above her, hanging from the ceiling, is a simple, placeholder light fixture emitting a distinct, vibrant magenta glow (#FF00FF). This is the object to be replaced. The overall scene has moody, cinematic lighting. 4K, hyper-realistic, professional color grading.',
     [Scenario.GALLERY_CHANDELIER]: 'Professional photograph, wide-angle shot of a minimalist, white-walled art gallery with polished concrete floors. A stylishly dressed woman stands in the center, looking up in admiration. The gallery is empty except for her. Hanging from the high ceiling is a single, glowing magenta (#FF00FF) placeholder object, positioned as if it\'s a central art installation. The lighting is clean and diffuse, with soft shadows, typical of a high-end gallery. 4K, hyper-realistic, sophisticated atmosphere.',
     [Scenario.GOTHIC_CHANDELIER]: 'Cinematic photograph, moody and atmospheric. A woman in a long, elegant velvet gown stands in the center of a vast, gothic-style manor library with towering, dark wood bookshelves and a vaulted ceiling. A large, circular window at the back lets in faint moonlight. The only significant light source is a large, brightly glowing magenta (#FF00FF) placeholder object hanging from the center of the ceiling. The woman gestures gracefully towards it. The scene has high contrast, deep shadows, and a sense of timeless grandeur. 8K resolution, hyper-realistic, rich textures of wood and fabric.',
@@ -737,6 +850,11 @@ const PROMPTS = {
     [Scenario.MODERN_DINING_CHANDELIER]: 'DSLR photograph of a modern, minimalist dining room. A long, dark wood dining table is centered in the room with elegant chairs. Above the table, hanging from the ceiling, is a single, glowing magenta (#FF00FF) placeholder object for a light fixture. The room has large windows with soft, natural light and polished concrete floors. 4K, hyper-realistic, architectural digest style, clean lines.',
     [Scenario.HOTEL_LOBBY_CHANDELIER]: 'Wide-angle photograph of a luxurious, grand hotel lobby with a double-height ceiling and a sweeping marble staircase. In the center of the vast space, hanging from the high ceiling, is a massive, glowing magenta (#FF00FF) placeholder object representing a grand chandelier. The lobby is decorated with plush seating areas and large indoor plants. The lighting is grand and impressive. 8K resolution, hyper-realistic, majestic atmosphere.',
     [Scenario.FARMHOUSE_CHANDELIER]: 'Photograph of a cozy, rustic farmhouse dining room. A large, reclaimed wood dining table sits under a vaulted ceiling with exposed wooden beams. Hanging from the central beam is a glowing magenta (#FF00FF) placeholder object for a chandelier. The room has a stone fireplace and warm, inviting lighting. 4K, hyper-realistic, country living magazine style, rich textures.',
+    [Scenario.GRAND_STAIRCASE_CHANDELIER]: 'DSLR photograph of the grand foyer of a luxurious mansion. A sweeping, curved marble staircase dominates the scene. In the center of the double-height ceiling, hanging above the staircase, is a single, brightly glowing magenta (#FF00FF) placeholder object, representing a grand chandelier. The scene is lit by soft, natural light from a large arched window. 8K resolution, hyper-realistic, architectural digest style.',
+    [Scenario.BANQUET_HALL_CHANDELIER]: 'Wide-angle photograph of a vast, elegant banquet hall prepared for a formal gala. Round tables with white tablecloths are perfectly set. The ceiling is high and ornate. Hanging in the center of the hall is a large, glowing magenta (#FF00FF) placeholder object for a chandelier. The lighting is warm and sophisticated. 4K, hyper-realistic, professional event photography.',
+    [Scenario.MUSEUM_ATRIUM_CHANDELIER]: 'Architectural photograph of a modern art museum\'s central atrium. The space is minimalist with white walls, concrete floors, and a large skylight. Suspended from the high ceiling is a glowing magenta (#FF00FF) placeholder object for a modern, sculptural light fixture. The light is bright, natural, and diffuse. 4K, hyper-realistic, clean aesthetic.',
+    [Scenario.OPERA_HOUSE_LOBBY_CHANDELIER]: 'Photograph of the opulent, historic lobby of a grand opera house, featuring red velvet curtains, gold leaf details, and classical architecture. Hanging from the center of a domed, frescoed ceiling is a massive, multi-tiered, glowing magenta (#FF00FF) placeholder object for a crystal chandelier. The atmosphere is rich and dramatic. 8K resolution, hyper-realistic.',
+    [Scenario.PENTHOUSE_SUITE_CHANDELIER]: 'Photograph of a sleek, modern living room in a luxury penthouse suite at twilight. Floor-to-ceiling windows reveal a stunning, blurred city skyline with bokeh lights. Above the contemporary seating area, a glowing magenta (#FF00FF) placeholder object for a chandelier is hanging. The interior lighting is warm and stylish. 4K, hyper-realistic, shallow depth of field.',
     [Scenario.PRODUCT_SHELF]: 'Commercial product photograph of a modern, brightly-lit retail shelf made of light wood and metal. On the shelf, in the center, is a simple, solid magenta (#FF00FF) cube acting as a placeholder for a product. The background is filled with generic, out-of-focus products to create a realistic store environment. Clean, minimalist aesthetic. 4K, hyper-realistic, tack-sharp focus on the magenta placeholder.',
     [Scenario.OFFICE_SCREEN]: 'Professional photograph of a modern, sleek office environment. A high-end, bezel-less computer monitor sits on a clean, wooden desk. The monitor is turned on and displays a solid, vibrant magenta color (#FF00FF) as a placeholder for a UI design. A window in the background provides soft, natural light, creating subtle reflections on the screen. The background is stylishly blurred (bokeh effect). 4K, hyper-realistic.',
     [Scenario.TSHIRT_MODEL]: 'E-commerce fashion photograph. A model stands against a plain, off-white studio background. The model is wearing a high-quality, plain t-shirt. On the front of the t-shirt is a large, perfectly centered, solid magenta (#FF00FF) rectangle, serving as a clear placeholder for a design. The lighting is bright and even, with no harsh shadows. The focus is on the t-shirt. 4K, hyper-realistic, clean aesthetic.',
@@ -797,6 +915,10 @@ const PROMPTS = {
     [Scenario.ATM_SCREEN]: 'Eye-level photograph of a modern, sleek ATM machine\'s interface. The touchscreen is brightly lit and displays a solid, vibrant magenta color (#FF00FF) as a placeholder for a banking UI. The surrounding keypad and card slot are slightly out of focus. The setting is a clean, well-lit bank lobby. 4K, hyper-realistic.',
     [Scenario.PROJECTOR_SCREEN_MEETING]: 'Photograph of a dark, modern corporate meeting room. A large projection screen on the wall is brightly illuminated, displaying a solid, vibrant magenta color (#FF00FF) as a placeholder for a presentation. The silhouettes of a few people sitting at a long table are visible in the foreground. The only light comes from the projector. Cinematic feel. 4K, hyper-realistic.',
     [Scenario.HANDHELD_CONSOLE_SCREEN]: 'Product photograph of a person holding a modern handheld gaming console (like a Nintendo Switch). Their thumbs are on the controls. The console\'s screen is bright and displays a solid, vibrant magenta color (#FF00FF) as a placeholder for a game UI. The background is dark to emphasize the glowing screen. 4K, hyper-realistic, dramatic lighting.',
+    [Scenario.COWORKING_SPACE_LAPTOP]: 'Lifestyle photograph of a bustling, modern co-working space with an open-plan layout. In the foreground, a modern laptop is open on a shared desk. The laptop screen displays a solid, vibrant magenta color (#FF00FF) as a placeholder. The background is filled with blurred people working and collaborating. Natural light from large windows. 4K, hyper-realistic, shallow depth of field.',
+    [Scenario.MEDICAL_TABLET_SCREEN]: 'Clean, professional photograph set in a modern, sterile doctor\'s office or hospital room. A doctor or nurse is holding a tablet. The tablet\'s screen is on and displays a solid, vibrant magenta color (#FF00FF) placeholder for a medical UI. The background is clean and white/light blue, conveying a sense of health and technology. 4K, hyper-realistic.',
+    [Scenario.RETAIL_POS_SCREEN]: 'Photograph of a modern point-of-sale (POS) terminal on the counter of a chic, minimalist fashion boutique. The touchscreen of the POS system is on and displays a solid, vibrant magenta color (#FF00FF) placeholder. The background is a beautifully merchandised but blurred clothing rack. 4K, hyper-realistic, commercial shot.',
+    [Scenario.DIGITAL_WHITEBOARD_MEETING]: 'Photograph of a collaborative brainstorming session in a creative office. A group of people is gathered around a large, wall-mounted digital whiteboard. The screen of the whiteboard is illuminated and displays a solid, vibrant magenta color (#FF00FF) as a placeholder for a presentation or collaborative app. The people are slightly motion-blurred, indicating activity. 4K, hyper-realistic, dynamic and modern workplace.',
     [Scenario.SERUM_BOTTLE]: 'Luxury product photograph. A sleek, amber glass serum bottle with a black dropper cap sits on a minimalist marble surface. The area for the main label is a solid, vibrant magenta color (#FF00FF). The lighting is soft and diffuse, creating elegant reflections on the glass. 4K, hyper-realistic, skincare aesthetic.',
     [Scenario.PUMP_BOTTLE]: 'Clean product photograph. A white plastic pump bottle for lotion or soap stands on a bright, modern bathroom countertop. The wrap-around label area is a solid, vibrant magenta color (#FF00FF). The background is slightly blurred with clean tiles. 4K, hyper-realistic, fresh and hygienic feel.',
     [Scenario.SQUEEZE_TUBE]: 'Product photograph of a matte-finish cosmetic squeeze tube standing upright on a clean, reflective surface. The main branding area on the tube is a solid, vibrant magenta color (#FF00FF). The lighting is soft and even, studio quality. 4K, hyper-realistic, minimalist aesthetic.',
@@ -826,6 +948,9 @@ const ARTISTIC_STYLES = [
   { id: 'cinematic', label: 'styleCinematic', description: 'styleCinematicDescription' },
   { id: 'vintage', label: 'styleVintage', description: 'styleVintageDescription' },
   { id: 'watercolor', label: 'styleWatercolor', description: 'styleWatercolorDescription' },
+  { id: 'noir', label: 'styleNoir', description: 'styleNoirDescription' },
+  { id: 'pop_art', label: 'stylePopArt', description: 'stylePopArtDescription' },
+  { id: 'impressionism', label: 'styleImpressionism', description: 'styleImpressionismDescription' },
 ];
 
 const STYLE_PROMPTS = {
@@ -833,6 +958,9 @@ const STYLE_PROMPTS = {
   cinematic: 'Apply a cinematic color grade to the image. Enhance the contrast, slightly desaturate the colors, and add a subtle teal and orange color palette. The result should look like a still from a high-end movie.',
   vintage: 'Give the image a vintage photograph look. Add a subtle sepia tone, increase the grain, slightly fade the blacks, and add a soft vignette effect around the edges. The result should feel nostalgic, like a photo from the 1970s.',
   watercolor: 'Transform the image into a beautiful watercolor painting. The lines should be soft, colors should bleed into each other realistically, and the overall texture should resemble watercolor paper. The result should be artistic and painterly, not just a simple filter.',
+  noir: 'Convert the image to a high-contrast, black and white noir film still. Emphasize deep blacks, bright highlights, and dramatic, hard-edged shadows. The mood should be mysterious and cinematic.',
+  pop_art: 'Transform the image into a 1960s pop art style, like the work of Andy Warhol or Roy Lichtenstein. Use vibrant, saturated, flat colors, bold black outlines, and Ben-Day dots for shading. The result should be graphic and energetic.',
+  impressionism: 'Reimagine the image as an Impressionist painting. Use short, visible brushstrokes and a soft focus. Emphasize the quality of light and atmosphere over fine details. The colors should be vibrant and blended. The style should be similar to Monet or Renoir.',
 };
 
 const CATEGORY_TITLES: Record<string, string> = {
@@ -893,6 +1021,7 @@ const App: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>(categoryKeys[0]);
   const [selectedScenario, setSelectedScenario] = useState<Scenario>(SCENARIO_CATEGORIES[categoryKeys[0]].scenariosBySubcategory[Object.keys(SCENARIO_CATEGORIES[categoryKeys[0]].scenariosBySubcategory)[0]][0].id);
   const [aspectRatio, setAspectRatio] = useState<string>('1:1');
+  const [numVariations, setNumVariations] = useState<number>(3);
   
   const [sceneVariations, setSceneVariations] = useState<string[]>([]);
   const [selectedSceneIndex, setSelectedSceneIndex] = useState<number | null>(null);
@@ -966,11 +1095,18 @@ const App: React.FC = () => {
     setSceneVariations([]);
     setSelectedSceneIndex(null);
     try {
-      let basePrompt = PROMPTS.base[selectedScenario];
+      const basePrompt = PROMPTS.base[selectedScenario];
+      const aspectRatioHints: { [key: string]: string } = {
+        '16:9': 'Widescreen, landscape orientation. ',
+        '9:16': 'Vertical composition, portrait orientation. ',
+        '1:1': 'Square composition. '
+      };
+      let finalPrompt = (aspectRatioHints[aspectRatio] || '') + basePrompt;
+      
       if (isHighQuality) {
-        basePrompt += ', ultra high definition, photorealistic masterpiece, award-winning photography, 16K resolution.';
+        finalPrompt += ', ultra high definition, photorealistic masterpiece, award-winning photography, 16K resolution.';
       }
-      const baseImageB64Array = await generateBaseImage(basePrompt, aspectRatio);
+      const baseImageB64Array = await generateBaseImage(finalPrompt, aspectRatio, numVariations);
       setSceneVariations(baseImageB64Array);
       setSelectedSceneIndex(0);
     } catch (err) {
@@ -1073,6 +1209,7 @@ const App: React.FC = () => {
               <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">{t('step2Subtitle')}</p>
               <div className="space-y-6 p-6 bg-white dark:bg-gray-800/50 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
                 <AspectRatioSelector value={aspectRatio} onChange={setAspectRatio} />
+                <VariationCountSelector value={numVariations} onChange={setNumVariations} />
                 <div className="text-center">
                     <Button onClick={handleGenerateScenes} disabled={isGeneratingScenes} className="w-full sm:w-auto">
                         {isGeneratingScenes ? t('generatingScenes') : t('generateScenesButton')}
@@ -1081,9 +1218,9 @@ const App: React.FC = () => {
                  <div className="grid grid-cols-3 gap-4">
                     {isGeneratingScenes && (
                         <>
-                        <SceneVariationSkeleton />
-                        <SceneVariationSkeleton />
-                        <SceneVariationSkeleton />
+                          {[...Array(numVariations)].map((_, index) => (
+                            <SceneVariationSkeleton key={index} />
+                          ))}
                         </>
                     )}
                     {!isGeneratingScenes && sceneVariations.map((src, index) => (

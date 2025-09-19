@@ -14,27 +14,42 @@ const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
  * @returns A new Error with a user-friendly message.
  */
 const handleApiError = (error: unknown, context: string): Error => {
-  console.error(`Error during ${context}:`, error);
+  console.error(`Error during ${context}:`, error); // Log the full technical error for debugging
+
+  // If the error is already a user-friendly message from a higher-level check, just pass it through.
+  if (error instanceof Error && (
+      error.message.startsWith('The API did not return') ||
+      error.message.startsWith('The model refused')
+    )) {
+    return error;
+  }
 
   if (error instanceof Error) {
-    const errorMessage = error.message.toLowerCase();
+    const message = error.message.toLowerCase();
     
-    // Check for specific, common API errors
-    if (errorMessage.includes('api_key_invalid') || errorMessage.includes('permission_denied')) {
-      return new Error('API key is invalid or missing permissions. Please check your configuration.');
+    if (message.includes('api_key') || message.includes('permission_denied')) {
+      return new Error('Authentication failed. Please check your API key and permissions.');
     }
-    if (errorMessage.includes('safety')) {
-      return new Error(`Request blocked for safety reasons during ${context}. Try a different prompt or image.`);
+    if (message.includes('safety')) {
+      return new Error(`The request was blocked for safety reasons during ${context}. Please try a different prompt or design.`);
     }
-    if (errorMessage.includes('billing')) {
-      return new Error('There seems to be a billing issue with your account. Please verify your Google Cloud project settings.');
+    if (message.includes('billing')) {
+      return new Error('There appears to be a billing issue with your account. Please check your Google Cloud project settings.');
     }
-    if (errorMessage.includes('not found')) {
-        return new Error(`The requested model could not be found. Context: ${context}.`);
+    if (message.includes('resource_exhausted') || message.includes('429')) {
+      return new Error('The service is currently overloaded. Please wait a moment and try again.');
+    }
+    if (message.includes('deadline_exceeded')) {
+        return new Error('The request timed out. Please try again.');
     }
 
-    // For general API errors or soft refusals from the model, pass the message along.
-    return new Error(`Failed to ${context.replace(/ing/,'e')}: ${error.message}`);
+    // This catches specific model refusals that are part of the main error message.
+    if (message.includes('response was blocked')) {
+        return new Error(`The model's response was blocked, likely due to safety filters. Try adjusting your prompt. Context: ${context}.`);
+    }
+
+    // Generic fallback for other API errors
+    return new Error(`An API error occurred while ${context}. Please try again later.`);
   }
 
   // Fallback for unexpected, non-Error exceptions
@@ -46,16 +61,17 @@ const handleApiError = (error: unknown, context: string): Error => {
  * Generates base image scene variations using a text prompt.
  * @param prompt The text prompt to generate the images from.
  * @param aspectRatio The desired aspect ratio for the generated images.
+ * @param numberOfImages The number of image variations to generate.
  * @returns An array of base64 encoded strings of the generated PNG images.
  * @throws An error with a user-friendly message if the API call fails.
  */
-export const generateBaseImage = async (prompt: string, aspectRatio: string): Promise<string[]> => {
+export const generateBaseImage = async (prompt: string, aspectRatio: string, numberOfImages: number): Promise<string[]> => {
   try {
     const response = await ai.models.generateImages({
       model: 'imagen-4.0-generate-001',
       prompt: prompt,
       config: {
-        numberOfImages: 3,
+        numberOfImages: numberOfImages,
         outputMimeType: 'image/png',
         aspectRatio: aspectRatio,
       },

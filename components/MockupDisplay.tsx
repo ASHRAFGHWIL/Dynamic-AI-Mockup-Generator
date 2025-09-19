@@ -19,7 +19,7 @@ const MockupDisplay: React.FC<MockupDisplayProps> = ({ isLoading, loadingStep, e
   };
   
   return (
-    <div className={`bg-gray-200 dark:bg-gray-700/50 w-full rounded-lg flex items-center justify-center p-4 relative overflow-hidden shadow-inner transition-all duration-300 ${aspectRatioClasses[aspectRatio] || 'aspect-square'}`}>
+    <div className={`bg-gray-200 dark:bg-gray-700/50 w-full rounded-lg flex items-center justify-center p-4 relative overflow-hidden shadow-inner transition-all duration-300 ${aspectRatioClasses[aspectRatio] || 'aspect-square'} max-h-[85vh] lg:max-h-[calc(100vh-10rem)] mx-auto`}>
       {isLoading && (
         <div className="text-center">
           <Spinner />
