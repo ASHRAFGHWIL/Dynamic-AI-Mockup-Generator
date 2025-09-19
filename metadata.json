@@ -1,0 +1,5 @@
+{
+  "name": "Dynamic AI Mockup Generator",
+  "description": "An AI-powered application to generate elegant, photorealistic mockups. Upload your design to see it placed in a variety of professional lifestyle scenes, either within a frame or as a dynamic object like a chandelier.",
+  "requestFramePermissions": []
+}
