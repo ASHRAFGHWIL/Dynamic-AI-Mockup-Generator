@@ -102,6 +102,7 @@ export enum Scenario {
   HONEY_JAR = 'HONEY_JAR',
   SOAP_BAR_WRAP = 'SOAP_BAR_WRAP',
   SPRAY_BOTTLE = 'SPRAY_BOTTLE',
+  WOMAN_HOLDING_PRODUCT_STREET = 'WOMAN_HOLDING_PRODUCT_STREET',
 }
 
 export type DesignType = 'frame' | 'chandelier' | 'product' | 'screen' | 'apparel' | 'billboard' | 'mug_design' | 'label' | 'poster';

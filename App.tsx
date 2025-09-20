@@ -247,6 +247,15 @@ const SCENARIO_OPTIONS: ScenarioOption[] = [
     description: 'Showcase your product on a brightly lit, modern retail shelf.',
     image: 'https://picsum.photos/seed/shelf/400/300',
     requiresDesign: 'product',
+    subcategory: 'subcategoryProductRetail',
+  },
+  {
+    id: Scenario.WOMAN_HOLDING_PRODUCT_STREET,
+    title: 'Woman Holding Product on Street',
+    description: 'A beautiful woman holding your product on a vibrant American city street.',
+    image: 'https://picsum.photos/seed/productstreet/400/300',
+    requiresDesign: 'product',
+    subcategory: 'subcategoryProductLifestyle',
   },
   {
     id: Scenario.BOOK_COVER,
@@ -254,6 +263,7 @@ const SCENARIO_OPTIONS: ScenarioOption[] = [
     description: 'Display your cover design on a realistic hardcover book in a cozy setting.',
     image: 'https://picsum.photos/seed/book/400/300',
     requiresDesign: 'product',
+    subcategory: 'subcategoryProductPackaging',
   },
   {
     id: Scenario.CEREAL_BOX,
@@ -261,6 +271,7 @@ const SCENARIO_OPTIONS: ScenarioOption[] = [
     description: 'Your design on a cereal box placed on a sunny kitchen counter.',
     image: 'https://picsum.photos/seed/cereal/400/300',
     requiresDesign: 'product',
+    subcategory: 'subcategoryProductPackaging',
   },
   {
     id: Scenario.SHOPPING_BAG,
@@ -268,6 +279,7 @@ const SCENARIO_OPTIONS: ScenarioOption[] = [
     description: 'Present your brand on a high-end paper shopping bag held by a model.',
     image: 'https://picsum.photos/seed/bag/400/300',
     requiresDesign: 'product',
+    subcategory: 'subcategoryProductLifestyle',
   },
   {
     id: Scenario.OFFICE_SCREEN,
@@ -856,6 +868,7 @@ const PROMPTS = {
     [Scenario.OPERA_HOUSE_LOBBY_CHANDELIER]: 'Photograph of the opulent, historic lobby of a grand opera house, featuring red velvet curtains, gold leaf details, and classical architecture. Hanging from the center of a domed, frescoed ceiling is a massive, multi-tiered, glowing magenta (#FF00FF) placeholder object for a crystal chandelier. The atmosphere is rich and dramatic. 8K resolution, hyper-realistic.',
     [Scenario.PENTHOUSE_SUITE_CHANDELIER]: 'Photograph of a sleek, modern living room in a luxury penthouse suite at twilight. Floor-to-ceiling windows reveal a stunning, blurred city skyline with bokeh lights. Above the contemporary seating area, a glowing magenta (#FF00FF) placeholder object for a chandelier is hanging. The interior lighting is warm and stylish. 4K, hyper-realistic, shallow depth of field.',
     [Scenario.PRODUCT_SHELF]: 'Commercial product photograph of a modern, brightly-lit retail shelf made of light wood and metal. On the shelf, in the center, is a simple, solid magenta (#FF00FF) cube acting as a placeholder for a product. The background is filled with generic, out-of-focus products to create a realistic store environment. Clean, minimalist aesthetic. 4K, hyper-realistic, tack-sharp focus on the magenta placeholder.',
+    [Scenario.WOMAN_HOLDING_PRODUCT_STREET]: 'DSLR photograph, lifestyle product shot. A beautiful, stylish woman is standing on a busy, slightly blurred New York City street. She is smiling and holding a simple, solid magenta (#FF00FF) cube in her hands, presenting it towards the camera. The lighting is bright and natural, reflecting the city atmosphere. Shallow depth of field. 4K, hyper-realistic, sharp focus on the woman and the magenta placeholder.',
     [Scenario.OFFICE_SCREEN]: 'Professional photograph of a modern, sleek office environment. A high-end, bezel-less computer monitor sits on a clean, wooden desk. The monitor is turned on and displays a solid, vibrant magenta color (#FF00FF) as a placeholder for a UI design. A window in the background provides soft, natural light, creating subtle reflections on the screen. The background is stylishly blurred (bokeh effect). 4K, hyper-realistic.',
     [Scenario.TSHIRT_MODEL]: 'E-commerce fashion photograph. A model stands against a plain, off-white studio background. The model is wearing a high-quality, plain t-shirt. On the front of the t-shirt is a large, perfectly centered, solid magenta (#FF00FF) rectangle, serving as a clear placeholder for a design. The lighting is bright and even, with no harsh shadows. The focus is on the t-shirt. 4K, hyper-realistic, clean aesthetic.',
     [Scenario.HOODIE_MODEL]: 'Streetwear fashion photograph. A cool model in an urban city environment at golden hour. The model is wearing a plain, high-quality hoodie. On the front of the hoodie is a large, perfectly centered, solid magenta (#FF00FF) rectangle, serving as a clear placeholder for a design. The background is a slightly blurred city street with graffiti. 4K, hyper-realistic, shallow depth of field.',
@@ -932,7 +945,7 @@ const PROMPTS = {
   edit: {
     frame: 'Find the vibrant magenta area (#FF00FF) inside the frame and replace it perfectly with the provided user design. The design should inherit the scene\'s lighting, perspective, and any subtle shadows or reflections. Integrate it seamlessly for a photorealistic result.',
     chandelier: 'Replace the glowing magenta placeholder light fixture with the user-provided chandelier design. The new chandelier must be integrated into the ceiling, become the primary light source for the top of the scene, glow realistically, and cast accurate light and shadows onto the room and the woman below.',
-    product: 'Find the magenta cube placeholder on the shelf and replace it entirely with the provided user product image. The product should sit realistically on the shelf, adopting the scene\'s lighting and casting a soft, accurate shadow. The final image should look like a professional product shot.',
+    product: 'Find the magenta cube placeholder and replace it entirely with the provided user product image. The product should sit realistically on the shelf or be held naturally, adopting the scene\'s lighting and casting a soft, accurate shadow. The final image should look like a professional product shot.',
     screen: 'Find the magenta area (#FF00FF) on the monitor screen and replace it perfectly with the provided user UI design. The design should look like it is being displayed on a backlit screen, with a slight emissive glow. Preserve any natural screen reflections from the scene to maintain realism.',
     apparel: 'Find the magenta placeholder area (#FF00FF) on the apparel item and replace it with the provided user design. The design must warp and conform perfectly to the item\'s fabric, including any wrinkles, folds, and shadows. The texture of the fabric should be visible through the design for maximum realism.',
     billboard: 'Find the large, glowing magenta billboard (#FF00FF) in the image. Replace the magenta area entirely with the provided user\'s design. The design must look like it\'s being displayed on a realistic, emissive LED screen. It should be bright, casting a subtle colored light onto nearby surfaces and the wet street below. Ensure the perspective is perfect.',

@@ -80,5 +80,8 @@
   "subcategoryBeverages": "Beverages",
   "subcategoryFoodPantry": "Food & Pantry",
   "subcategoryHomeHealth": "Home & Health",
+  "subcategoryProductLifestyle": "Lifestyle & People",
+  "subcategoryProductRetail": "In-Store & Retail",
+  "subcategoryProductPackaging": "Packaging",
   "general": "General"
 }
