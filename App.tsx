@@ -126,6 +126,14 @@ const SCENARIO_OPTIONS: ScenarioOption[] = [
     subcategory: 'subcategoryPeople',
   },
   {
+    id: Scenario.WOMAN_FRAME_ROME_MURALS,
+    title: 'Woman Holding Frame in Rome',
+    description: 'An elegant Italian woman on a street in Rome, holding a creative frame in front of world-class murals.',
+    image: 'https://picsum.photos/seed/framerome/400/300',
+    requiresDesign: 'frame',
+    subcategory: 'subcategoryPeople',
+  },
+  {
     id: Scenario.HOME_FRAME,
     title: 'Frame in Modern Home Entryway',
     description: 'A stylish, welcoming entryway of a modern home, perfect for showcasing art.',
@@ -1161,6 +1169,7 @@ const PROMPTS = {
     [Scenario.WOMAN_FRAME_INTERLAKEN]: 'Outdoor lifestyle photograph. An adventurous yet stylish, beautiful woman stands on a scenic viewpoint in Interlaken, with the turquoise lakes and the Jungfrau mountain range in the beautifully blurred background. She is holding a large, simple, matte black frame naturally. The interior of the frame is a solid, vibrant magenta color (#FF00FF) to serve as a placeholder. The lighting is clear, bright daylight, typical of the Swiss Alps. Shallow depth of field. 4K, hyper-realistic, vibrant and fresh feel.',
     [Scenario.WOMAN_FRAME_MONTREUX]: 'Cinematic lifestyle photograph with a shallow depth of field. An artistic, beautiful woman with a confident air strolls along the flower-lined lakeside promenade in Montreux. The Château de Chillon is faintly visible in the blurred distance across Lake Geneva. She holds a large, simple, matte black frame in a relaxed, elegant manner. The interior of the frame is a solid, vibrant magenta color (#FF00FF) to serve as a placeholder. The scene is bathed in the warm light of a late afternoon sun. 4K, hyper-realistic, professional color grading, sophisticated and chic vibe.',
     [Scenario.WOMAN_FRAME_CAIRO_MURALS]: 'DSLR photograph, stylish marketing advertisement. Square composition. A beautiful, elegant American woman on a street in Cairo, Egypt. She stands in front of a gallery of world-class, vibrant murals, which are beautifully blurred (bokeh). She is holding a large, very creative frame. The interior of the frame is a solid, vibrant magenta color (#FF00FF) to serve as a placeholder. The shot is a front view, with tack-sharp focus on the woman and the frame to highlight it. 4K, hyper-realistic.',
+    [Scenario.WOMAN_FRAME_ROME_MURALS]: 'DSLR photograph, stylish marketing advertisement. Square composition. A beautiful, elegant Italian woman on a street in Rome, Italy. She stands in front of a gallery of world-class, vibrant murals, which are beautifully blurred (bokeh). She is holding a large, highly creative frame. The interior of the frame is a solid, vibrant magenta color (#FF00FF) to serve as a placeholder. The shot is a front view, with tack-sharp focus on the woman and the frame to highlight it. 4K, hyper-realistic.',
     [Scenario.ARMCHAIR_CHANDELIER]: 'Dramatic, elegant interior photograph. A woman in a stylish armchair in a luxurious room with a high ceiling looks up and points. Above her, hanging from the ceiling, is a simple, placeholder light fixture emitting a distinct, vibrant magenta glow (#FF00FF). This is the object to be replaced. The overall scene has moody, cinematic lighting. 4K, hyper-realistic, professional color grading.',
     [Scenario.GALLERY_CHANDELIER]: 'Professional photograph, wide-angle shot of a minimalist, white-walled art gallery with polished concrete floors. A stylishly dressed woman stands in the center, looking up in admiration. The gallery is empty except for her. Hanging from the high ceiling is a single, glowing magenta (#FF00FF) placeholder object, positioned as if it\'s a central art installation. The lighting is clean and diffuse, with soft shadows, typical of a high-end gallery. 4K, hyper-realistic, sophisticated atmosphere.',
     [Scenario.GOTHIC_CHANDELIER]: 'Cinematic photograph, moody and atmospheric. A woman in a long, elegant velvet gown stands in the center of a vast, gothic-style manor library with towering, dark wood bookshelves and a vaulted ceiling. A large, circular window at the back lets in faint moonlight. The only significant light source is a large, brightly glowing magenta (#FF00FF) placeholder object hanging from the center of the ceiling. The woman gestures gracefully towards it. The scene has high contrast, deep shadows, and a sense of timeless grandeur. 8K resolution, hyper-realistic, rich textures of wood and fabric.',
