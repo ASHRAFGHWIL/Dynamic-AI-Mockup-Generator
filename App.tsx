@@ -562,6 +562,14 @@ const SCENARIO_OPTIONS: ScenarioOption[] = [
     subcategory: 'subcategoryProductHomeLifestyle',
   },
   {
+    id: Scenario.WOMAN_LASER_LAMP_KITCHEN,
+    title: 'Woman with Laser Lamp in Kitchen',
+    description: 'An elegant woman pointing to a laser-cut wooden lamp in a luxury kitchen.',
+    image: 'https://picsum.photos/seed/laserlamp/400/300',
+    requiresDesign: 'product',
+    subcategory: 'subcategoryProductHomeLifestyle',
+  },
+  {
     id: Scenario.BOOK_COVER,
     title: 'Hardcover Book Cover',
     description: 'Display your cover design on a realistic hardcover book in a cozy setting.',
@@ -1211,6 +1219,7 @@ const PROMPTS = {
     [Scenario.WOMAN_LASER_PRODUCT_BOHEMIAN_STUDIO]: 'Atmospheric photograph. A woman in a flowing, elegant bohemian-style dress is in a creative, artistic studio filled with plants and eclectic decor. She holds a unique, handheld wooden laser light product. The product is a simple wooden cube, with its front face being a solid, vibrant magenta (#FF00FF) placeholder. The product projects a soft, variable colored light, adding to the magical feel of the room. The lighting is warm and diffuse. 4K, hyper-realistic, artistic and moody.',
     [Scenario.WOMAN_LASER_PRODUCT_MINIMALIST_OFFICE]: 'Professional product lifestyle photograph. A woman in a sophisticated, business-casual outfit stands in a bright, minimalist home office with a clean desk and simple decor. She holds a sleek, handheld wooden laser light product. The product is a simple wooden cube, and its front face is a solid, vibrant magenta color (#FF00FF) placeholder. It emits a subtle, variable colored light, adding a touch of modern tech to the scene. The lighting is clean and bright from a large window. 4K, hyper-realistic, professional and sharp.',
     [Scenario.WOMAN_LASER_PRODUCT_RUSTIC_DINING_ROOM]: 'Cinematic photograph, warm tones. A woman in an elegant evening dress is in a rustic-chic dining room with a large reclaimed wood table and exposed brick. She holds a beautifully crafted, handheld wooden laser light product. The product is a simple wooden cube, its front face a solid, vibrant magenta (#FF00FF) placeholder. It casts a warm, variable colored glow, creating an intimate atmosphere for a dinner setting. The lighting is moody and warm, from pendant lights above. 4K, hyper-realistic, shallow depth of field.',
+    [Scenario.WOMAN_LASER_LAMP_KITCHEN]: 'DSLR photograph, luxury advertisement. A glamorous and elegant American woman in her late twenties stands in a luxurious, modern kitchen with bright natural light. She smiles warmly, pointing upwards. Suspended above the kitchen island is a simple, brightly glowing magenta (#FF00FF) cube as a placeholder for a lamp. The scene has a cinematic composition, ultra-realistic 8K quality, shallow depth of field, professional product photography style, and warm color gradation. Vertical composition.',
     [Scenario.OFFICE_SCREEN]: 'Professional photograph of a modern, sleek office environment. A high-end, bezel-less computer monitor sits on a clean, wooden desk. The monitor is turned on and displays a solid, vibrant magenta color (#FF00FF) as a placeholder for a UI design. A window in the background provides soft, natural light, creating subtle reflections on the screen. The background is stylishly blurred (bokeh effect). 4K, hyper-realistic.',
     [Scenario.TSHIRT_MODEL]: 'E-commerce fashion photograph. A model stands against a plain, off-white studio background. The model is wearing a high-quality, plain t-shirt. On the front of the t-shirt is a large, perfectly centered, solid magenta (#FF00FF) rectangle, serving as a clear placeholder for a design. The lighting is bright and even, with no harsh shadows. The focus is on the t-shirt. 4K, hyper-realistic, clean aesthetic.',
     [Scenario.HOODIE_MODEL]: 'Streetwear fashion photograph. A cool model in an urban city environment at golden hour. The model is wearing a plain, high-quality hoodie. On the front of the hoodie is a large, perfectly centered, solid magenta (#FF00FF) rectangle, serving as a clear placeholder for a design. The background is a slightly blurred city street with graffiti. 4K, hyper-realistic, shallow depth of field.',
