@@ -6,7 +6,7 @@ type Lang = 'en' | 'ar';
 const translationsCache: { [key in Lang]?: Translations } = {};
 
 export const useTranslation = () => {
-  const [lang, setLang] = useState<Lang>('en');
+  const [lang, setLang] = useState<Lang>('ar');
   const [translations, setTranslations] = useState<Translations>({});
 
   useEffect(() => {

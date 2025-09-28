@@ -32,7 +32,7 @@ const ArtisticStyleSelector: React.FC<ArtisticStyleSelectorProps> = ({ styles, s
   return (
     <div className="space-y-2">
       <Dropdown
-        label="Select an artistic style"
+        label={t('selectArtisticStyle')}
         options={styleOptions}
         selectedValue={selectedStyle}
         onValueChange={onSelectStyle}
