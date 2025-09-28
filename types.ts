@@ -160,9 +160,14 @@ export enum Scenario {
   FOLDED_SHIRT_HELD = 'FOLDED_SHIRT_HELD',
   FOLDED_SHIRT_HELD_CLOSEUP = 'FOLDED_SHIRT_HELD_CLOSEUP',
   WOMAN_HOLDING_TSHIRT_OUTDOORS_CLOSEUP = 'WOMAN_HOLDING_TSHIRT_OUTDOORS_CLOSEUP',
+  WOMAN_TSHIRT_CREATIVE_OFFICE = 'WOMAN_TSHIRT_CREATIVE_OFFICE',
+  WOMAN_BLOUSE_CITY_STREET = 'WOMAN_BLOUSE_CITY_STREET',
+  WOMAN_SILK_BLOUSE_ELEGANT_INTERIOR = 'WOMAN_SILK_BLOUSE_ELEGANT_INTERIOR',
+  WOMAN_SPORTS_BLOUSE_OUTDOORS_CLOSEUP = 'WOMAN_SPORTS_BLOUSE_OUTDOORS_CLOSEUP',
+  TSHIRT_MODEL_OUTDOORS_CLOSEUP = 'TSHIRT_MODEL_OUTDOORS_CLOSEUP',
 }
 
-export type DesignType = 'frame' | 'chandelier' | 'product' | 'screen' | 'apparel' | 'billboard' | 'mug_design' | 'label' | 'poster';
+export type DesignType = 'frame' | 'chandelier' | 'product' | 'screen' | 'apparel' | 'billboard' | 'poster' | 'mug_design' | 'label';
 
 export interface ScenarioOption {
   id: Scenario;
