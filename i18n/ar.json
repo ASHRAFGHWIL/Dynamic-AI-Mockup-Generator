@@ -62,6 +62,8 @@
   "styleImpressionismDescription": "نمط ناعم ورسامي مع ضربات فرشاة مرئية، يركز على الضوء.",
   "highQualityMode": "وضع الجودة العالية",
   "highQualityModeDescription": "ينشئ صورة أكثر تفصيلاً. قد يستغرق وقتًا أطول.",
+  "backgroundBlurEffect": "تأثير ضبابية الخلفية",
+  "backgroundBlurEffectDescription": "يضيف ضبابية خفيفة للخلفية (تأثير البوكيه) لإبراز العنصر الرئيسي.",
   "category_frame": "نماذج الإطارات",
   "category_chandelier": "نماذج الثريات",
   "category_product": "نماذج المنتجات",

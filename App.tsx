@@ -194,6 +194,7 @@ const PROMPTS = {
     noir: 'Convert the image to a high-contrast black and white, reminiscent of a classic noir film. Make the blacks very deep and the whites bright, emphasizing dramatic shadows and highlights.',
     pop_art: 'Apply a vibrant, comic-book style pop art effect. Use bold, saturated colors, strong outlines around objects, and a halftone dot pattern in some areas.',
     impressionism: 'Give the image the appearance of an Impressionist painting. Use soft, visible brushstrokes, focus on the play of light, and slightly blur fine details to create a dreamy, artistic effect.',
+    background_blur: 'Apply a realistic, subtle background blur (bokeh effect) to the image. Keep the main subject, especially any product, frame, or person, in tack-sharp focus. The background should be softly and naturally out of focus, enhancing the depth of field.',
   }
 };
 
@@ -430,6 +431,7 @@ const App: React.FC = () => {
   const [aspectRatio, setAspectRatio] = useState('1:1');
   const [variationCount, setVariationCount] = useState(3);
   const [artisticStyle, setArtisticStyle] = useState('none');
+  const [backgroundBlur, setBackgroundBlur] = useState(false);
   const [highQualityMode, setHighQualityMode] = useState(false);
 
   const currentScenarioInfo = useMemo(() => {
@@ -503,6 +505,7 @@ const App: React.FC = () => {
       setError(null);
       setDesign(null);
       setUploadError('');
+      setBackgroundBlur(false);
   }
 
   const handleGenerateScenes = async () => {
@@ -548,6 +551,13 @@ const App: React.FC = () => {
         finalImage = editedImage;
       }
       
+      if (backgroundBlur) {
+        setLoadingStep(t('applyingStyle'));
+        const blurPrompt = PROMPTS.style.background_blur;
+        const blurredImage = await applyArtisticStyle(finalImage, blurPrompt);
+        finalImage = blurredImage;
+      }
+
       if (artisticStyle !== 'none') {
         setLoadingStep(t('applyingStyle'));
         const stylePrompt = PROMPTS.style[artisticStyle as keyof typeof PROMPTS.style];
@@ -555,7 +565,7 @@ const App: React.FC = () => {
         finalImage = styledImage;
       }
       
-      if (highQualityMode && (artisticStyle === 'none' && requiresDesign === 'none')) {
+      if (highQualityMode && artisticStyle === 'none' && !backgroundBlur) {
         setLoadingStep(t('applyingStyle'));
         const enhancePrompt = "Enhance the image to achieve photorealistic quality, with ultra-fine details, improved lighting, and crisp focus. Do not change the composition or content.";
         const enhancedImage = await applyArtisticStyle(finalImage, enhancePrompt);
@@ -650,11 +660,17 @@ const App: React.FC = () => {
                 onSelectStyle={setArtisticStyle}
               />
                <ToggleSwitch
+                  label={t('backgroundBlurEffect')}
+                  description={t('backgroundBlurEffectDescription')}
+                  checked={backgroundBlur}
+                  onChange={setBackgroundBlur}
+                />
+               <ToggleSwitch
                   label={t('highQualityMode')}
                   description={t('highQualityModeDescription')}
                   checked={highQualityMode}
                   onChange={setHighQualityMode}
-                  disabled={artisticStyle !== 'none' || !showGenerateScenes}
+                  disabled={artisticStyle !== 'none' || backgroundBlur || !showGenerateScenes}
                 />
             </section>
 

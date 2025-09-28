@@ -62,6 +62,8 @@
   "styleImpressionismDescription": "Soft, painterly style with visible brushstrokes, focusing on light.",
   "highQualityMode": "High Quality Mode",
   "highQualityModeDescription": "Generates a more detailed image. May take longer.",
+  "backgroundBlurEffect": "Background Blur",
+  "backgroundBlurEffectDescription": "Adds a subtle background blur (bokeh) to make the subject pop.",
   "category_frame": "Frame Mockups",
   "category_chandelier": "Chandelier Mockups",
   "category_product": "Product Mockups",
