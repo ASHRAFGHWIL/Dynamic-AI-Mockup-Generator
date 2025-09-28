@@ -159,6 +159,7 @@ export enum Scenario {
   WEBCAM_BOX_PACKAGING = 'WEBCAM_BOX_PACKAGING',
   FOLDED_SHIRT_HELD = 'FOLDED_SHIRT_HELD',
   FOLDED_SHIRT_HELD_CLOSEUP = 'FOLDED_SHIRT_HELD_CLOSEUP',
+  WOMAN_HOLDING_TSHIRT_OUTDOORS_CLOSEUP = 'WOMAN_HOLDING_TSHIRT_OUTDOORS_CLOSEUP',
 }
 
 export type DesignType = 'frame' | 'chandelier' | 'product' | 'screen' | 'apparel' | 'billboard' | 'mug_design' | 'label' | 'poster';
