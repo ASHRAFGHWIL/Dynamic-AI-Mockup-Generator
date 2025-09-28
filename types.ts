@@ -158,6 +158,7 @@ export enum Scenario {
   GAMING_MOUSE_BOX = 'GAMING_MOUSE_BOX',
   WEBCAM_BOX_PACKAGING = 'WEBCAM_BOX_PACKAGING',
   FOLDED_SHIRT_HELD = 'FOLDED_SHIRT_HELD',
+  FOLDED_SHIRT_HELD_CLOSEUP = 'FOLDED_SHIRT_HELD_CLOSEUP',
 }
 
 export type DesignType = 'frame' | 'chandelier' | 'product' | 'screen' | 'apparel' | 'billboard' | 'mug_design' | 'label' | 'poster';
