@@ -44,6 +44,8 @@
   "square": "Square (1:1)",
   "landscape": "Landscape (16:9)",
   "portrait": "Portrait (9:16)",
+  "landscape_4_3": "Landscape (4:3)",
+  "portrait_3_4": "Portrait (3:4)",
   "errorInvalidFileType": "Invalid file type. Please upload an image.",
   "errorFileSizeTooLarge": "File is too large. Maximum size is 15MB.",
   "styleNone": "None",

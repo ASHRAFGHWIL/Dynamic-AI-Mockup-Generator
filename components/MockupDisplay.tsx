@@ -16,6 +16,8 @@ const MockupDisplay: React.FC<MockupDisplayProps> = ({ isLoading, loadingStep, e
     '1:1': 'aspect-square',
     '16:9': 'aspect-video',
     '9:16': 'aspect-[9/16]',
+    '4:3': 'aspect-[4/3]',
+    '3:4': 'aspect-[3/4]',
   };
   
   return (

@@ -13,6 +13,8 @@ const AspectRatioSelector: React.FC<AspectRatioSelectorProps> = ({ value, onChan
     { id: '1:1', label: t('square') },
     { id: '16:9', label: t('landscape') },
     { id: '9:16', label: t('portrait') },
+    { id: '4:3', label: t('landscape_4_3') },
+    { id: '3:4', label: t('portrait_3_4') },
   ];
 
   return (

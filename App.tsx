@@ -545,8 +545,13 @@ const App: React.FC = () => {
       const basePrompt = PROMPTS.base[selectedScenario];
       const variations = await generateBaseImage(basePrompt, aspectRatio, variationCount);
       setBaseSceneVariations(variations);
-    } catch (e: any) {
-      setError(e.message);
+    } catch (e) {
+      console.error("An error occurred during scene generation:", e);
+      if (e instanceof Error) {
+        setError(e.message);
+      } else {
+        setError("An unexpected error occurred. Please try again.");
+      }
     } finally {
       setIsLoading(false);
     }
@@ -600,8 +605,13 @@ const App: React.FC = () => {
 
       setGeneratedImage(`data:image/png;base64,${finalImage}`);
 
-    } catch (e: any) {
-      setError(e.message);
+    } catch (e) {
+      console.error("An error occurred during mockup generation:", e);
+      if (e instanceof Error) {
+        setError(e.message);
+      } else {
+        setError("An unexpected error occurred. Please try again.");
+      }
     } finally {
       setIsLoading(false);
     }
