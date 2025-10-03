@@ -459,6 +459,7 @@ const App: React.FC = () => {
   const [artisticStyle, setArtisticStyle] = useState('none');
   const [backgroundBlur, setBackgroundBlur] = useState(false);
   const [highQualityMode, setHighQualityMode] = useState(false);
+  const [isAutoGenerateActive, setIsAutoGenerateActive] = useState(false);
 
   const currentScenarioInfo = useMemo(() => {
     return SCENARIO_OPTIONS.find(opt => opt.id === selectedScenario);
@@ -532,6 +533,7 @@ const App: React.FC = () => {
       setDesign(null);
       setUploadError('');
       setBackgroundBlur(false);
+      // Do not reset isAutoGenerateActive, as it persists across mockups
   }
 
   const handleGenerateScenes = async () => {
@@ -557,7 +559,7 @@ const App: React.FC = () => {
     }
   };
 
-  const handleGenerateMockup = async () => {
+  const handleGenerateMockup = useCallback(async () => {
     if (!selectedBaseScene) {
       setError("Please generate and select a base scene first.");
       return;
@@ -570,7 +572,6 @@ const App: React.FC = () => {
     
     setError(null);
     setIsLoading(true);
-    setGeneratedImage(null);
 
     try {
       let finalImage = selectedBaseScene;
@@ -615,11 +616,38 @@ const App: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [selectedBaseScene, currentScenarioInfo, design, backgroundBlur, artisticStyle, highQualityMode, t]);
 
   const designTypeNeeded = currentScenarioInfo?.requiresDesign ?? 'none';
   const showUploader = designTypeNeeded !== 'none';
   const showGenerateScenes = PROMPTS.base.hasOwnProperty(selectedScenario);
+
+  // Effect for automatic generation after the first download
+  useEffect(() => {
+    if (!isAutoGenerateActive || isLoading) {
+      return;
+    }
+
+    const canGenerate = selectedBaseScene && (!showUploader || (showUploader && design));
+    if (canGenerate) {
+      handleGenerateMockup();
+    }
+  }, [isAutoGenerateActive, showUploader, selectedBaseScene, design, artisticStyle, backgroundBlur, highQualityMode, handleGenerateMockup]);
+
+  const handleDownloadAndActivate = () => {
+    if (!generatedImage) return;
+    
+    const link = document.createElement('a');
+    link.href = generatedImage;
+    link.download = `mockup-${selectedScenario}-${Date.now()}.png`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    if (!isAutoGenerateActive) {
+      setIsAutoGenerateActive(true);
+    }
+  };
   
   return (
     <div className={`min-h-screen ${theme} font-sans`} dir={lang === 'ar' ? 'rtl' : 'ltr'}>
@@ -734,18 +762,18 @@ const App: React.FC = () => {
                 {generatedImage && (
                   <Button 
                     variant="secondary" 
-                    onClick={() => {
-                      const link = document.createElement('a');
-                      link.href = generatedImage;
-                      link.download = `mockup-${selectedScenario}.png`;
-                      link.click();
-                    }}
+                    onClick={handleDownloadAndActivate}
                     className="w-full sm:w-auto"
                   >
                     {t('downloadButton')}
                   </Button>
                 )}
               </div>
+              {isAutoGenerateActive && (
+                <p className="text-sm text-center text-gray-600 dark:text-gray-400 mt-4">
+                  {t('autoGenerateActive')}
+                </p>
+              )}
             </section>
           </div>
         </div>

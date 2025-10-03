@@ -30,15 +30,16 @@ const handleApiError = (error: unknown, context: string): Error => {
     if (message.includes('api_key') || message.includes('permission_denied')) {
       return new Error('Authentication failed. Please check your API key and permissions.');
     }
+    
+    // Improved quota/billing handling
+    if (message.includes('quota') || message.includes('billing') || message.includes('resource_exhausted') || message.includes('429')) {
+      return new Error('API quota exceeded. Please check your plan and billing details. This might be a temporary rate limit, so you can also try again in a moment.');
+    }
+
     if (message.includes('safety')) {
       return new Error(`The request was blocked for safety reasons during ${context}. Please try a different prompt or design.`);
     }
-    if (message.includes('billing')) {
-      return new Error('There appears to be a billing issue with your account. Please check your Google Cloud project settings.');
-    }
-    if (message.includes('resource_exhausted') || message.includes('429')) {
-      return new Error('The service is currently overloaded. Please wait a moment and try again.');
-    }
+
     if (message.includes('deadline_exceeded')) {
         return new Error('The request timed out. Please try again.');
     }

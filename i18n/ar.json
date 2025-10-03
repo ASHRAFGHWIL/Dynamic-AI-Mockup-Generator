@@ -66,6 +66,7 @@
   "highQualityModeDescription": "ينشئ صورة أكثر تفصيلاً. قد يستغرق وقتًا أطول.",
   "backgroundBlurEffect": "تأثير ضبابية الخلفية",
   "backgroundBlurEffectDescription": "يضيف ضبابية خفيفة للخلفية (تأثير البوكيه) لإبراز العنصر الرئيسي.",
+  "autoGenerateActive": "التوليد التلقائي نشط الآن. أي تغيير في الخيارات سيؤدي إلى إنشاء نموذج جديد.",
   "category_frame": "نماذج الإطارات",
   "category_chandelier": "نماذج الثريات",
   "category_product": "نماذج المنتجات",

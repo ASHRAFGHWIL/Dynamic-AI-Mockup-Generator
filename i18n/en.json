@@ -66,6 +66,7 @@
   "highQualityModeDescription": "Generates a more detailed image. May take longer.",
   "backgroundBlurEffect": "Background Blur",
   "backgroundBlurEffectDescription": "Adds a subtle background blur (bokeh) to make the subject pop.",
+  "autoGenerateActive": "Auto-generation is now active. Any change to the options will create a new mockup.",
   "category_frame": "Frame Mockups",
   "category_chandelier": "Chandelier Mockups",
   "category_product": "Product Mockups",
